@@ -1,0 +1,17 @@
+{
+  "name": "GraphQLServer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "graphql": "^0.13.2",
+    "moment": "^2.22.2",
+    "mongoose": "^5.2.7",
+    "mongose": "^0.0.2-security"
+  },
+  "scripts": {
+    "dev": "node server.js"
+  }
+}
