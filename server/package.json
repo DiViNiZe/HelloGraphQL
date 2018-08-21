@@ -12,6 +12,6 @@
     "mongose": "^0.0.2-security"
   },
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node server.mjs"
   }
 }
