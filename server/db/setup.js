@@ -6,7 +6,7 @@ db.once('open', ()=>{
   console.log('DB Connected!!!!')
 })
 
-const Statement = mongoose.model('statement',
+const Statement = mongoose.model('statements',
 {
   title:String,
   price:Number,

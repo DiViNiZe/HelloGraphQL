@@ -12,13 +12,13 @@ const resolveStatement = (callback) => {
 }
 
 const addStatement =  (args,callback) => {
-  let statement = new Statement({
+  const statement = new Statement({
     title:args.title,
     price:args.price,
     description:args.description,
     timestamp:args.timestamp
   })
-
+  console.log('statement = ',statement.toString)
   statement.save((err,result) => {
     if(err){
       callback(err)

@@ -2,13 +2,23 @@
 // import { statementType } from '../type/statementType.mjs'
 // import { resloveStatement } from '../resolver/statement.mjs'
 
-const {GraphQLList} = require('graphql')
+const {GraphQLList,
+GraphQLString} = require('graphql')
 const {statementType} = require('../type/statementType')
 const {resolveStatement} = require('../resolver/statement')
 
+const test = {
+  type: GraphQLString,
+  resolve: (_,args) => {
+    return new Promise((resolve,reject) => {
+      resolve('Test')
+    })
+  }
+}
+
 const getStatement = {
   type: new GraphQLList(statementType),
-  resolve:async (_,args) => {
+  resolve: (_,args) => {
     return new Promise((reslove,reject) => {
       resolveStatement  (data => {
         reslove(data)
@@ -18,5 +28,6 @@ const getStatement = {
 }
 
 module.exports = {
-  getStatement
+  getStatement:getStatement,
+  test:test
 }

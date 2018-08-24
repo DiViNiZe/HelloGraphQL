@@ -2,19 +2,19 @@ const {
       GraphQLList,
       GraphQLString,
       GraphQLInt,
+      GraphQLFloat,
       GraphQLID
     } = require('graphql')
 const {statementType}  = require('../type/statementType')
 const {addStatementResolver,resolveAddStatement} = require('../resolver/statement')
 
 const addStatement = {
-  type: new GraphQLList(statementType),
   args:{
     title:{
       type:GraphQLString
     },
     price:{
-      type:GraphQLInt
+      type:GraphQLFloat
     },
     description:{
       type:GraphQLString
@@ -23,14 +23,15 @@ const addStatement = {
       type:GraphQLID
     }
   },
-  reslove: (_,args) => {
+  type: statementType,
+  resolve: (_,args) => {
     return new Promise((resolve,reject) => {
         resolveAddStatement(args,data => {
         resolve(data)
       })
     })
   }
-}
+ }
 
 module.exports = {
   addStatement

@@ -3,7 +3,8 @@ const {
   GraphQLList,
   GraphQLInt,
   GraphQLString,
-  GraphQLID
+  GraphQLID,
+  GraphQLFloat
 } = require('graphql')
 
 const  statementType = new GraphQLObjectType({
@@ -12,11 +13,11 @@ const  statementType = new GraphQLObjectType({
      _id:{
       type: GraphQLID
      },
-     price:{
+     title:{
        type:GraphQLString
      },
      price:{
-       type: GraphQLInt
+       type: GraphQLFloat
      },
      description:{
        type:GraphQLString
