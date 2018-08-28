@@ -32,13 +32,28 @@ const getStatementByTitle = {
   },
   type:new GraphQLList(statementType),
   resolve:(_,args) => {
-    return new Promise((resolve,rejecct) => {
+    return new Promise((resolve,reject) => {
       resolveStatementByTitle(args,data => {
         resolve(data)
       })
     })
   }
+}
 
+const forceGetStatementByTitle = {
+  args:{
+    title:{
+      type: GraphQLString
+    }
+  },
+  type:new GraphQLList(statementType),
+  resolve: (_,args) => {
+    return new Promise((resolve,reject) => {
+      forceGetStatementByTitle(args, data => {
+        resolve(data)
+      })
+    })
+  }
 }
 
 module.exports = {

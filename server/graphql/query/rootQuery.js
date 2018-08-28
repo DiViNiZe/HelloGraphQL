@@ -6,7 +6,7 @@ const rootQuery = new GraphQLObjectType({
   fields: () => ({
     getStatement: getStatement,
     test:test,
-    getStatementByTitle
+    getStatementByTitle,
   })
 })
 

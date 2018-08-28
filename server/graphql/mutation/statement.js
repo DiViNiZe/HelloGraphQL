@@ -3,10 +3,11 @@ const {
       GraphQLString,
       GraphQLInt,
       GraphQLFloat,
+      GraphQLBoolean,
       GraphQLID
     } = require('graphql')
 const {statementType}  = require('../type/statementType')
-const {resolveAddStatement,resolveDeleteStatementByTitle} = require('../resolver/statement')
+const {resolveAddStatement,resolveDeleteStatementByTitle,resolveDeleteStatementByID} = require('../resolver/statement')
 
 const addStatement = {
   args:{
@@ -46,7 +47,24 @@ const addStatement = {
    }
  }
 
+ const deleteStatementByID = {
+   args:{
+     _id:{
+       type:GraphQLString
+     }
+   },
+   type:GraphQLString,
+   resolve: (_,args) => {
+      return new Promise((resolve,reject) => {
+        resolveDeleteStatementByID(args,error => {
+          resolve(error)
+        })
+      })
+   }
+ }
+
 module.exports = {
   addStatement,
-  deleteStatement
+  deleteStatement,
+  deleteStatementByID
 }

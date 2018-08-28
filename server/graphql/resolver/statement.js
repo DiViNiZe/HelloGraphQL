@@ -36,8 +36,18 @@ const resolveStatementByTitle = ({title},callback) => {
   })
 }
 
-const resolveDeleteStatementByTitle = (args,callback) => {
-  Statement.deleteOne({'title':args.title},(err,result) => {
+const forceResolveStatementByTitle = ({title},callback) => {
+  Statement.find({'title':{'$regex':title}},(err,result) => {
+    if(err){
+      callback(err)
+    }else{
+      callback(result)
+    }
+  })
+}
+
+const resolveDeleteStatementByTitle = ({title},callback) => {
+  Statement.deleteOne({'title':title},(err,result) => {
     if (err) {
       callback(err)
     } else {
@@ -46,9 +56,21 @@ const resolveDeleteStatementByTitle = (args,callback) => {
   })
 }
 
+const resolveDeleteStatementByID = ({_id},error) => {
+  Statement.deleteOne(new Object({"_id" : _id}), err => {
+    if(err){
+      error(err)
+    }else{
+      error(null)
+    }
+  })
+}
+
 module.exports = {
   resolveStatement,
   resolveAddStatement:addStatement,
   resolveStatementByTitle,
-  resolveDeleteStatementByTitle
+  resolveDeleteStatementByTitle,
+  forceResolveStatementByTitle,
+  resolveDeleteStatementByID
 }
