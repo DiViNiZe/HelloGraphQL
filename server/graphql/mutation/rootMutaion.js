@@ -1,15 +1,14 @@
 const {GraphQLObjectType} = require('graphql')
-const {addStatement} = require('./statement')
+const {addStatement,
+deleteStatement} = require('./statement')
 const rootMutation = new GraphQLObjectType({
   name:'rootMutation',
   description:'all mutation will be store here',
   fields: () => ({
-    addStatement:addStatement
+    addStatement:addStatement,
+    deleteStatement
   })
 })
-
-console.log('Use Rootmutation')
-
 
 module.exports = {
   rootMutation

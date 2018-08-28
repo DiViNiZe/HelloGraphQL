@@ -1,4 +1,3 @@
-// import { statement } from '../../db/setup.mjs' 
 const {Statement} = require('../../db/setup')
 
 const resolveStatement = (callback) => {
@@ -16,9 +15,8 @@ const addStatement =  (args,callback) => {
     title:args.title,
     price:args.price,
     description:args.description,
-    timestamp:args.timestamp
+    timestamp:new Date().getTime()
   })
-  console.log('statement = ',statement.toString)
   statement.save((err,result) => {
     if(err){
       callback(err)
@@ -28,7 +26,29 @@ const addStatement =  (args,callback) => {
   })
 }
 
+const resolveStatementByTitle = ({title},callback) => {
+  Statement.find({'title':title},(err,result) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(result)
+    }
+  })
+}
+
+const resolveDeleteStatementByTitle = (args,callback) => {
+  Statement.deleteOne({'title':args.title},(err,result) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(result)
+    }
+  })
+}
+
 module.exports = {
   resolveStatement,
-  resolveAddStatement:addStatement
+  resolveAddStatement:addStatement,
+  resolveStatementByTitle,
+  resolveDeleteStatementByTitle
 }

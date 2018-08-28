@@ -6,7 +6,7 @@ const {
       GraphQLID
     } = require('graphql')
 const {statementType}  = require('../type/statementType')
-const {addStatementResolver,resolveAddStatement} = require('../resolver/statement')
+const {resolveAddStatement,resolveDeleteStatementByTitle} = require('../resolver/statement')
 
 const addStatement = {
   args:{
@@ -18,9 +18,6 @@ const addStatement = {
     },
     description:{
       type:GraphQLString
-    },
-    timestamp:{
-      type:GraphQLID
     }
   },
   type: statementType,
@@ -33,6 +30,23 @@ const addStatement = {
   }
  }
 
+ const deleteStatement = {
+   args:{
+     title:{
+       type:GraphQLString
+     }
+   },
+   type:new GraphQLList(statementType),
+   resolve: (_,args) => {
+     return new Promise((resolve,reject) => {
+      resolveDeleteStatementByTitle(args,data => {
+         resolve(data)
+       })
+     })
+   }
+ }
+
 module.exports = {
-  addStatement
+  addStatement,
+  deleteStatement
 }

@@ -12,5 +12,4 @@ app.use('/graphql',graphQLHTTP({
   graphiql:true// GraphQL Debugger
 }))
 app.listen(PORT)
-console.log('schema',schema)
 console.info("Server is Runing on localhost:",PORT)
