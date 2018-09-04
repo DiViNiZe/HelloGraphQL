@@ -1,10 +1,9 @@
 const {
   GraphQLObjectType,
-  GraphQLList,
-  GraphQLInt,
   GraphQLString,
   GraphQLID,
-  GraphQLFloat
+  GraphQLFloat,
+  GraphQLEnumType
 } = require('graphql')
 
 const  statementType = new GraphQLObjectType({
@@ -24,6 +23,9 @@ const  statementType = new GraphQLObjectType({
      },
      timestamp:{
        type: GraphQLID
+     },
+     episode:{
+       type:new GraphQLEnumType(episode)
      }
    })
  })
