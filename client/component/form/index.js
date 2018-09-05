@@ -33,21 +33,18 @@ export default class Form extends React.Component{
               <div className='col-2'>
                 <input type="text" className="form-control" onChange={(e) => {
                   this.setState({title:e.target.value})
-                  client.writeData({data:{title:e.target.value}})
                 }} id='title' placeholder="Title" />
               </div>
               <div className='col-2'>
                 <input type="text" className="form-control" id='price' onChange={(e) => {
                   this.setState({price:e.target.value})
-                  client.writeData({data:{price:e.target.value}})
                 }}  placeholder="amount" />
               </div>
               <div className='col-6'>
                 <input type="text" className="form-control" id='description' onChange={(e) => {
-                  this.setState({description:e.target.value})
-x               }}  placeholder="description" />
+                    this.setState({description:e.target.value})
+                }}  placeholder="description" />
               </div>
-              {console.log('title',client.cache.data.data.ROOT_QUERY.title)}
               <div className='col-2'>
                 <input type="submit"  className="btn btn-success" onClick={e => {
                   e.preventDefault()
