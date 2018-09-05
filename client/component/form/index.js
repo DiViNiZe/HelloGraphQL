@@ -20,15 +20,20 @@ export default class Form extends React.Component{
   }
 
    render() {
+     const GET_TITLE=gql`
+     {title @client}
+     `
+
     return (
-      <ApolloConsumer>
-        {({client}) => (
+      <ApolloConsumer query={GET_TITLE}>
+        {(client) => (
           <Mutation mutation={ADD_STATEMENT}>
           {(addStatement) => (
             <div className='row' >
               <div className='col-2'>
                 <input type="text" className="form-control" onChange={(e) => {
                   this.setState({title:e.target.value})
+                  client.writeData({data:{title:e.target.value}})
                 }} id='title' placeholder="Title" />
               </div>
               <div className='col-2'>
@@ -42,6 +47,7 @@ export default class Form extends React.Component{
                   this.setState({description:e.target.value})
 x               }}  placeholder="description" />
               </div>
+              {console.log('title',client.cache.data.data.ROOT_QUERY.title)}
               <div className='col-2'>
                 <input type="submit"  className="btn btn-success" onClick={e => {
                   e.preventDefault()
