@@ -16,25 +16,6 @@ query{
 }  
 `
 
-// const Page = ({data}) => {
-//   return (
-//     <div>
-//       <h1>Hi Graph</h1>
-//       <Form/>
-//       {data.getStatement.map(statement => {
-//          return(
-//           <div className='row' key={statement._id}>
-//             <div className='col-3'>{statement.title}</div>
-//             <div className='col-2'>{statement.price}</div>
-//             <div className='col-5'>{statement.description}</div>
-//             <div className='col-2'>{moment(parseInt(statement.timestamp)).format("D MMM YY")}</div>
-//           </div>
-//          )
-//         })}
-//     </div>
-//   )
-// }
-
 class Page extends React.Component{
 
   constructor(){

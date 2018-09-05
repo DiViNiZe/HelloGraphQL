@@ -20,10 +20,6 @@ export default class Form extends React.Component{
   }
 
    render() {
-     const GET_TITLE=gql`
-     {title @client}
-     `
-
     return (
       <ApolloConsumer query={GET_TITLE}>
         {(client) => (
