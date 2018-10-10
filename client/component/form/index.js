@@ -13,6 +13,7 @@ mutation($title: String,$price: Float,$description: String){
   }
 }`
 
+
 export default class Form extends React.Component{
   constructor(){
     super()
@@ -21,7 +22,7 @@ export default class Form extends React.Component{
 
    render() {
     return (
-      <ApolloConsumer query={GET_TITLE}>
+      <ApolloConsumer>
         {(client) => (
           <Mutation mutation={ADD_STATEMENT}>
           {(addStatement) => (
@@ -55,7 +56,6 @@ export default class Form extends React.Component{
         </Mutation>
         )}
       </ApolloConsumer>
-      
     )
   }
 }
