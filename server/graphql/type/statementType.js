@@ -23,9 +23,6 @@ const  statementType = new GraphQLObjectType({
      },
      timestamp:{
        type: GraphQLID
-     },
-     episode:{
-       type:new GraphQLEnumType(episode)
      }
    })
  })

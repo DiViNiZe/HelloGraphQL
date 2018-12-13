@@ -1,0 +1,6 @@
+applications:
+- name: moneyfitserver
+#   random-route: true
+  memory: 512MB
+  path: .
+  command: node server.js
